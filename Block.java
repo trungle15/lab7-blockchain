@@ -6,7 +6,7 @@ public class Block {
   int number;
   int amount;
   Hash prehash;
-  long nonce;
+  long nonce; //this is nonce
   Hash nowhash;
 
   
