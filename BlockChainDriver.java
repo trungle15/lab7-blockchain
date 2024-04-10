@@ -64,7 +64,7 @@ public class BlockChainDriver {
 
   public static void removeLastBlock(BlockChain blockChain) {
     if (blockChain.removeLast()) {
-      System.out.println(blockChain.toString());
+      System.out.println(blockChain.toString());//print out all the blocks
   } else {
       System.out.println("only one block exists. Cannot remove.");
     }
