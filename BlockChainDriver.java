@@ -56,12 +56,12 @@ public class BlockChainDriver {
 
   public static void mineBlock(BufferedReader reader, BlockChain blockChain) throws NumberFormatException, IOException {
     System.out.print("Amount transferred? ");
-    int amount = scanner.nextInt();  // Read the transaction amount
-    scanner.nextLine();  // Consume the newline left-over
+    int amount = scanner.nextInt();  
+    scanner.nextLine();  
 
-    minedBlock = blockChain.mine(amount);  // Mine a new block
+    minedBlock = blockChain.mine(amount);  
 
-    // Print the details of the mined block
+    
     System.out.println("amount = " + amount + ", nonce = " + ((Block) minedBlock).getNonce());
     System.out.println(blockChain.toString());
 }
@@ -69,15 +69,15 @@ public class BlockChainDriver {
 
   public static void appendBlock(BufferedReader reader, BlockChain blockChain) throws NumberFormatException, IOException, IllegalAccessException {
     System.out.print("Amount transferred? ");
-    int amount = scanner.nextInt();  // Confirm the transaction amount
+    int amount = scanner.nextInt();  
 
     System.out.print("Nonce? ");
-    long nonce = scanner.nextLong();  // Confirm the nonce
-    scanner.nextLine();  // Consume the newline left-over
+    long nonce = scanner.nextLong();  
+    scanner.nextLine();  
     if (amount == ((Block) minedBlock).getAmount() && nonce == ((Block) minedBlock).getNonce()){
-      blockChain.append((Block) minedBlock);  // Append the mined block
+      blockChain.append((Block) minedBlock);  
       System.out.println(blockChain.toString());
-      minedBlock = null;  // Clear the mined block after appending
+      minedBlock = null;  
     }
 }
   
