@@ -10,19 +10,18 @@ public class BlockChain {
     this.size = 1;
   }
   
-  Block mine(int amount){
+  Block mine(int amount) {
     Block ret = new Block(size, amount, ((Block) last.value).getHash());
-    ret.mineBlock();
     return ret;
   }
 
-  int getSize(){
+  int getSize() {
     return this.size;
   }
 
   void append(Block blk) throws IllegalAccessException{
     if (blk.getPrevHash() == null || blk.getPrevHash().equals(((Block) last.value).getHash())){ 
-      last.insertAfter(blk);
+      last = last.insertAfter(blk);
       size++;
     }
     else{
@@ -30,11 +29,13 @@ public class BlockChain {
     }
   }
 
-  boolean removeLast(){
+  boolean removeLast() {
     if (size == 1){
       return false;
-    } else{
-      this.last.remove();
+    } else {
+      Node2<Block> toDelete = this.last;
+      this.last = toDelete.prev;
+      toDelete.remove();
       size--;
       return true;
     }
