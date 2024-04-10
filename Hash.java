@@ -1,5 +1,3 @@
-import java.nio.ByteBuffer;
-import java.security.MessageDigest;
 import java.util.Arrays;
 
 public class Hash {
