@@ -2,14 +2,18 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 public class BlockChainDriver {
+  private static Object minedBlock;
+  private static Scanner scanner= new Scanner(System.in);
+
+
   public static void main(String[] args)throws Exception {
     if (args.length != 1) {
       System.err.println("Usage: java BlockChainDriver <initial_amount>");
       System.exit(1);
   }
-
     int initialAmount = Integer.parseInt(args[0]);
     BlockChain blockChain = new BlockChain(initialAmount);
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -52,15 +56,30 @@ public class BlockChainDriver {
 
   public static void mineBlock(BufferedReader reader, BlockChain blockChain) throws NumberFormatException, IOException {
     System.out.print("Amount transferred? ");
-    int amount = Integer.parseInt(reader.readLine().trim());
-  }
+    int amount = scanner.nextInt();  // Read the transaction amount
+    scanner.nextLine();  // Consume the newline left-over
 
-  public static void appendBlock(BufferedReader reader, BlockChain blockChain) throws NumberFormatException, IOException {
+    minedBlock = blockChain.mine(amount);  // Mine a new block
+
+    // Print the details of the mined block
+    System.out.println("amount = " + amount + ", nonce = " + ((Block) minedBlock).getNonce());
+}
+  
+
+  public static void appendBlock(BufferedReader reader, BlockChain blockChain) throws NumberFormatException, IOException, IllegalAccessException {
     System.out.print("Amount transferred? ");
-    int amount = Integer.parseInt(reader.readLine().trim());
+    int amount = scanner.nextInt();  // Confirm the transaction amount
+
     System.out.print("Nonce? ");
-    long nonce = Long.parseLong(reader.readLine().trim());
-  }
+    long nonce = scanner.nextLong();  // Confirm the nonce
+    scanner.nextLine();  // Consume the newline left-over
+
+    blockChain.append((Block) minedBlock);  // Append the mined block
+    System.out.println("Block appended.");
+    minedBlock = null;  // Clear the mined block after appending
+      
+}
+  
 
   public static void removeLastBlock(BlockChain blockChain) {
     if (blockChain.removeLast()) {
