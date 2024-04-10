@@ -73,11 +73,11 @@ public class BlockChainDriver {
     System.out.print("Nonce? ");
     long nonce = scanner.nextLong();  // Confirm the nonce
     scanner.nextLine();  // Consume the newline left-over
-
-    blockChain.append((Block) minedBlock);  // Append the mined block
-    System.out.println("Block appended.");
-    minedBlock = null;  // Clear the mined block after appending
-      
+    if (amount == ((Block) minedBlock).getAmount() && nonce == ((Block) minedBlock).getNonce()){
+      blockChain.append((Block) minedBlock);  // Append the mined block
+      System.out.println("Block appended.");
+      minedBlock = null;  // Clear the mined block after appending
+    }
 }
   
 
