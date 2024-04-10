@@ -13,6 +13,7 @@ public class Block {
     this.number = num;
     this.amount = amount;
     this.prevHash = prevHash;
+    this.hash = calculateHash();
     mineBlock();
   }
 
