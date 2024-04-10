@@ -59,7 +59,8 @@ public void printBalances() {
 }
 
 public boolean isValidBlockChain() {
-  int alexisBalance = this.first.value.getAmount(); 
+  int origBalance = this.first.value.getAmount();
+  int alexisBalance = origBalance;
   Node2<Block> current = this.first.next; 
 
   while (current != null) {
@@ -67,13 +68,14 @@ public boolean isValidBlockChain() {
 
       alexisBalance += block.getAmount();
 
-      if (alexisBalance < 0) {
+      if (alexisBalance < 0 || alexisBalance > origBalance) {
           return false;
       }
 
       if (!block.getPrevHash().equals(current.prev.value.getHash())) {
           return false;
       }
+      
       current = current.next;
   }
 
