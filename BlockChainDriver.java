@@ -39,7 +39,6 @@ public class BlockChainDriver {
                 printHelp();
                 break;
             case "quit":
-                System.out.println("Exiting BlockChainDriver...");
                 System.exit(0);
             default:
                 System.out.println("Invalid command. Type 'help' instruction.");
@@ -64,7 +63,11 @@ public class BlockChainDriver {
   }
 
   public static void removeLastBlock(BlockChain blockChain) {
-
+    if (blockChain.removeLast()) {
+      
+  } else {
+      System.out.println("only one block exists. Cannot remove.");
+    }
   }
 
   public static void checkBlockChain(BlockChain blockChain) {
