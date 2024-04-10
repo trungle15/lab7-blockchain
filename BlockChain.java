@@ -12,6 +12,7 @@ public class BlockChain {
   
   Block mine(int amount){
     Block ret = new Block(size, amount, ((Block) last.value).getHash());
+    ret.mineBlock();
     return ret;
   }
 

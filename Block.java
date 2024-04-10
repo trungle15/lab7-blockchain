@@ -24,7 +24,7 @@ public class Block {
     this.hash = calculateHash();
   }
 
-  private void mineBlock() {
+  public void mineBlock() {
     nonce = 0;
     hash = calculateHash();
 
