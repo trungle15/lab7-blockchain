@@ -39,8 +39,8 @@ public class Block {
       MessageDigest digest = MessageDigest.getInstance("SHA-256");
       ByteBuffer buffer = ByteBuffer
           .allocate(Integer.BYTES * 2 + Long.BYTES + (prevHash != null ? prevHash.getData().length : 0));
-      buffer.putInt(number);
-      buffer.putInt(amount);
+
+      buffer.putInt(number).putInt(amount);
 
       if (prevHash != null) {
         buffer.put(prevHash.getData());
@@ -53,15 +53,6 @@ public class Block {
       throw new RuntimeException("Hashing algorithm not found", e);
     }
   }
-
-  // public static byte[] calculateHash(String msg) throws
-  // NoSuchAlgorithmException {
-  // MessageDigest md = MessageDigest.getInstance("sha-256");
-  // md.update(msg.getBytes());
-
-  // byte[] hash = md.digest;
-  // return hash;
-  // }
 
   public int getNum() {
     return number;
@@ -85,9 +76,9 @@ public class Block {
 
   @Override
   public String toString() {
-    return String.format("Block %d (Amount: %d, Nonce: %d, prevHash: %s, hash: %s)", 
-                        number, amount, nonce,
-                        prevHash == null ? "null" : prevHash.toString(),
-                        hash.toString());
+    return String.format("Block %d (Amount: %d, Nonce: %d, prevHash: %s, hash: %s)",
+        number, amount, nonce,
+        prevHash == null ? "null" : prevHash.toString(),
+        hash.toString());
   }
 }
