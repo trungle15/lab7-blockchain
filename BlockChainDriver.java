@@ -90,13 +90,19 @@ public class BlockChainDriver {
     }
   }
 
-  public static void checkBlockChain(BlockChain blockChain) {
+  private static void checkBlockChain(BlockChain blockChain) {
+    if (blockChain.isValidBlockChain()) {
+        System.out.println("Chain is valid!");
+        System.out.println(blockChain.toString());//print out all the blocks
+    } else {
+        System.out.println("Chain is not valid.");
+    }
+}
 
-  }
-
-  public static void reportBalances(BlockChain blockChain) {
-
-  }
+  private static void reportBalances(BlockChain blockChain) {
+    blockChain.printBalances();
+    System.out.println(blockChain.toString());//print out all the blocks
+}
 
   
   public static void printHelp() {
