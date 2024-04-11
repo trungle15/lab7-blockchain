@@ -15,14 +15,17 @@ public class Hash {
     return hash.length >= 3 && hash[0] == 0 && hash[1] == 0 && hash[2] == 0;
   }
 
-  public String toString(){
-    String ret = new String();
-
-    for (byte r : hash) {
-     ret = String.format(ret, Byte.toUnsignedInt(r));
-    }
-
-    return ret;
+  @Override
+  public String toString() {
+      StringBuilder hexString = new StringBuilder();
+      for (byte b : hash) {
+          String hex = Integer.toHexString(0xff & b);
+          if (hex.length() == 1) {
+              hexString.append('0');
+          }
+          hexString.append(hex);
+      }
+      return hexString.toString();
   }
 
   public boolean equals(Object other){
