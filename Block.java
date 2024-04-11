@@ -2,6 +2,16 @@ import java.nio.ByteBuffer;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * This Class is for the Structure for Block which can store the needed infomation as 
+ * every individual block in the chain.
+ * get and toString methods are included.
+ * 
+ * @author Trung Le
+ * @author Tony Li
+ * @author Vivien Yan
+ */
+
 public class Block {
   int number;
   int amount;

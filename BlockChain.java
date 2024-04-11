@@ -1,3 +1,14 @@
+/**
+ * This Class is for the structure of a BlockChain, which is a linked list with nodes 
+ * at the start and end. Also, the size is been tracking.
+ * 
+ * Methods like get, check, as well as toString are provided.
+ * 
+ * @author Trung Le
+ * @author Tony Li
+ * @author Vivien Yan
+ */
+
 public class BlockChain {
   //field
   Node2<Block> first;

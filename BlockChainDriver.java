@@ -3,6 +3,16 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
+/**
+ * This Class includes an main so that the arguement can be taken in and various 
+ * features for Blockchain such as mine, add, remove, and so on can be called 
+ * and if the BlockChain is valid or not can be checked.
+ * 
+ * @author Trung Le
+ * @author Tony Li
+ * @author Vivien Yan
+ */
+
 public class BlockChainDriver {
   private static Object minedBlock;
   private static Scanner scanner = new Scanner(System.in);

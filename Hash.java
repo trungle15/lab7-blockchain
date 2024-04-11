@@ -1,5 +1,14 @@
 import java.util.Arrays;
 
+/**
+ * This Class is for the Structure of Hash which only include a byte array.
+ * Specifically, the method for checking if the hash is valid is provided.
+ * 
+ * @author Trung Le
+ * @author Tony Li
+ * @author Vivien Yan
+ */
+
 public class Hash {
   byte[] hash;
 
