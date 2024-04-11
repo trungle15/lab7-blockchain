@@ -1,5 +1,5 @@
 public class BlockChain {
-
+  //field
   Node2<Block> first;
   Node2<Block> last;
   int size;
@@ -8,16 +8,16 @@ public class BlockChain {
     this.first = new Node2<Block>(new Block(0, initial, null));
     this.last = first;
     this.size = 1;
-  }
+  } //constructor
 
   Block mine(int amount) {
     Block ret = new Block(size, amount, ((Block) last.value).getHash());
     return ret;
-  }
+  } // method mine
 
   int getSize() {
     return this.size;
-  }
+  }//method getsize
 
   void append(Block blk) throws IllegalAccessException {
     if (blk.getPrevHash() == null || blk.getPrevHash().equals(((Block) last.value).getHash())) {
@@ -26,7 +26,7 @@ public class BlockChain {
     } else {
       throw new IllegalAccessException();
     }
-  }
+  }//method append
 
   boolean removeLast() {
     if (size == 1) {
@@ -38,11 +38,11 @@ public class BlockChain {
       size--;
       return true;
     }
-  }
+  }//method removelast
 
   public Hash getHash() {
     return this.last.value.getHash();
-  }
+  }//method gethash
 
   public void printBalances() {
     int alexisBalance = this.first.value.getAmount();
@@ -56,7 +56,7 @@ public class BlockChain {
     int blakeBalance = -alexisBalance + this.first.value.getAmount();
 
     System.out.println("Alexis: " + alexisBalance + ", Blake: " + blakeBalance);
-  }
+  }//method printbalances
 
   public boolean isValidBlockChain() {
     int origBalance = this.first.value.getAmount();
@@ -80,7 +80,7 @@ public class BlockChain {
     }
 
     return true;
-  }
+  }// method is valid blockchain
 
   public String toString() {
     StringBuilder builder = new StringBuilder();
@@ -90,6 +90,6 @@ public class BlockChain {
       current = current.next;
     }
     return builder.toString();
-  }
+  }// method tostring
 
 }

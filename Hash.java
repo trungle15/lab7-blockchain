@@ -5,15 +5,15 @@ public class Hash {
 
   public Hash(byte[] data){
     this.hash = data;
-  }
+  }//constructor
 
   public byte[] getData(){
     return this.hash;
-  }
+  }//method getdata
 
   public boolean isValid(){
     return hash.length >= 3 && hash[0] == 0 && hash[1] == 0 && hash[2] == 0;
-  }
+  }//method isvalid
 
   @Override
   public String toString() {
@@ -26,7 +26,7 @@ public class Hash {
           hexString.append(hex);
       }
       return hexString.toString();
-  }
+  }//method tostring
 
   public boolean equals(Object other){
     if (other instanceof Hash){
@@ -34,5 +34,5 @@ public class Hash {
       return Arrays.equals(this.hash, o.getData());
     };
     return false;
-  }
+  }//method equals
 }

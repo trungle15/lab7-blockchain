@@ -62,7 +62,7 @@ public class BlockChainDriver {
     System.out.println("amount = " + amount + ", nonce = " + ((Block) minedBlock).getNonce());
     System.out.println();
     System.out.println(blockChain.toString());
-  }
+  }// method mineblock
 
   public static void appendBlock(BufferedReader reader, BlockChain blockChain)
       throws NumberFormatException, IOException, IllegalAccessException {
@@ -78,7 +78,7 @@ public class BlockChainDriver {
       System.out.println(blockChain.toString());
       minedBlock = null;
     }
-  }
+  }//method appendblock
 
   public static void removeLastBlock(BlockChain blockChain) {
     if (blockChain.removeLast()) {
@@ -87,7 +87,7 @@ public class BlockChainDriver {
     } else {
       System.out.println("only one block exists. Cannot remove.");
     }
-  }
+  }//method removelastblock
 
   private static void checkBlockChain(BlockChain blockChain) {
     if (blockChain.isValidBlockChain()) {
@@ -98,13 +98,13 @@ public class BlockChainDriver {
 
     System.out.println();
     System.out.println(blockChain.toString());// print out all the blocks
-  }
+  }//method checkblockchain
 
   private static void reportBalances(BlockChain blockChain) {
     blockChain.printBalances();
     System.out.println();
     System.out.println(blockChain.toString());// print out all the blocks
-  }
+  }//method reportbalance
 
   public static void printHelp() {
     System.out.println("Valid commands:\n" +
@@ -115,5 +115,5 @@ public class BlockChainDriver {
         "    report: reports the balances of Alexis and Blake\n" +
         "    help: prints this list of commands\n" +
         "    quit: quits the program");
-  }
+  }//method printhelp
 }

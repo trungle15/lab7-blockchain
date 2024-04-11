@@ -15,7 +15,7 @@ public class Block {
     this.prevHash = prevHash;
     this.hash = calculateHash();
     mineBlock();
-  }
+  }// constructor
 
   public Block(int num, int amount, Hash prevHash, long nonce) {
     this.number = num;
@@ -23,7 +23,7 @@ public class Block {
     this.prevHash = prevHash;
     this.nonce = nonce;
     this.hash = calculateHash();
-  }
+  }//constructor
 
   public void mineBlock() {
     nonce = 0;
@@ -33,7 +33,7 @@ public class Block {
       nonce++;
       hash = calculateHash();
     }
-  }
+  }//mineblock
 
   private Hash calculateHash() {
     try {
@@ -53,27 +53,27 @@ public class Block {
     } catch (NoSuchAlgorithmException e) {
       throw new RuntimeException("Hashing algorithm not found", e);
     }
-  }
+  }// calculate hash
 
   public int getNum() {
     return number;
-  }
+  }//method getnum
 
   public int getAmount() {
     return amount;
-  }
+  }//method getamount
 
   public long getNonce() {
     return nonce;
-  }
+  }//method getnounce
 
   public Hash getPrevHash() {
     return prevHash;
-  }
+  }// method getprevhash
 
   public Hash getHash() {
     return hash;
-  }
+  }//method gethash
 
   @Override
   public String toString() {
@@ -81,5 +81,5 @@ public class Block {
         number, amount, nonce,
         prevHash == null ? "null" : prevHash.toString(),
         hash.toString());
-  }
+  }//method tostring
 }
